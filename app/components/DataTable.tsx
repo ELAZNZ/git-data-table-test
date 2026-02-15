@@ -53,53 +53,59 @@ export default function DataTable({ data, columns }: DataTableProps) {
   };
 
   return (
-    <table
-      className="text-right text-sm border-collapse text-[#323338] overflow-hidden rounded-2xl"
-      dir="rtl"
-    >
-      <thead className="bg-[#ECF0FC]">
-        <tr>
-          {columns.map((col) => (
-            <th
-              key={col.key}
-              className={`py-2.5 pr-2 leading-6 ${
-                col.sortable ? "cursor-pointer select-none" : ""
-              }`}
-              style={{ width: col.width }}
-              onClick={() => {
-                if (!col.sortable) return;
-
-                const newOrder =
-                  sortField === col.key && order === "asc" ? "desc" : "asc";
-
-                setSortField(col.key);
-                setOrder(newOrder);
-                handleSorting(col.key, newOrder);
-              }}
-            >
-              <div className="flex items-center gap-1">
-                {col.sortable && sortField === col.key && (
-                  <Image src={chevronsUpDown} alt="" width={16} height={16} />
-                )}
-
-                {col.header}
-              </div>
-            </th>
-          ))}
-        </tr>
-      </thead>
-
-      <tbody className="py-4 px-2 ">
-        {tableData.map((row, rowIndex) => (
-          <tr key={rowIndex} className="">
+    <div className="h-100 overflow-auto rounded-2xl">
+      <table
+        className="text-right text-sm border-collapse text-[#323338] h-100%"
+        dir="rtl"
+      >
+        <thead className="bg-[#ECF0FC]">
+          <tr>
             {columns.map((col) => (
-              <td key={col.key} className="p-2 leading-5 hover:text-[#3B60CD]">
-                {col.render ? col.render(row) : String(row[col.key] ?? "")}
-              </td>
+              <th
+                key={col.key}
+                className={`py-2.5 pr-2 leading-6 ${
+                  col.sortable ? "cursor-pointer select-none" : ""
+                }`}
+                style={{ width: col.width }}
+                onClick={() => {
+                  if (!col.sortable) return;
+
+                  const newOrder =
+                    sortField === col.key && order === "asc" ? "desc" : "asc";
+
+                  setSortField(col.key);
+                  setOrder(newOrder);
+                  handleSorting(col.key, newOrder);
+                }}
+              >
+                <div className="flex items-center gap-1">
+                  {col.sortable && sortField === col.key && (
+                    <Image src={chevronsUpDown} alt="" width={16} height={16} />
+                  )}
+
+                  {col.header}
+                </div>
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody className="py-4 px-2 ">
+          {tableData.map((row, rowIndex) => (
+            <tr key={rowIndex} className="">
+              {columns.map((col) => (
+                <td
+                  key={col.key}
+                  className="p-2 leading-5 hover:text-[#3B60CD]"
+                >
+                  {col.render ? col.render(row) : String(row[col.key] ?? "")}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      |
+    </div>
   );
 }
