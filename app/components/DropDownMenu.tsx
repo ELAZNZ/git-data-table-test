@@ -11,15 +11,13 @@ export const DropDownMenu = () => {
 
   return (
     <div className="">
-      <button onClick={handleButtonClick}>
-        ...
-        {openDropDonwMenu && (
-          <div className="">
-            <button onClick={() => {}}>Meow</button>
-            <button onClick={() => {}}>Vizh</button>
-          </div>
-        )}
-      </button>
+      <button onClick={handleButtonClick}>...</button>
+      {openDropDonwMenu && (
+        <div className="">
+          <button>Meow</button>
+          <button>Vizh</button>
+        </div>
+      )}
     </div>
   );
 };
