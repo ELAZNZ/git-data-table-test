@@ -1,10 +1,12 @@
 "use client";
 import DataTable from "./components/DataTable";
+import Image from "next/image";
 import { SwitchButton } from "./components/SwitchButton";
 import { CopyItem } from "./components/CopyItem";
 import { TableToolbar } from "./components/TableToolbar";
 import { useMemo, useState } from "react";
 import { DropDownMenu } from "./components/DropDownMenu";
+import spinnerDots from "@/app/assets/icons/spinnerDots.svg";
 
 // interface ServiceItem {
 //   id: number;
@@ -586,6 +588,16 @@ export default function Home() {
       key: "creationDate",
       sortable: true,
       width: "180px",
+      render: (row) => {
+        if (row.creationDate === "درحال ساخت")
+          return (
+            <div className="flex items-center gap-2">
+              <Image src={spinnerDots} alt="" />
+              <span>درحال ساخت</span>
+            </div>
+          );
+        else return <span>{row.creationDate}</span>;
+      },
     },
     {
       header: "وضعیت سرور",
@@ -597,17 +609,8 @@ export default function Home() {
       header: "",
       key: "actions",
       width: "40px",
-      render: (row) => <DropDownMenu />,
+      render: () => <DropDownMenu />,
     },
-    //
-    //   render: (row) => (
-    //     <div className="flex justify-end pl-2">
-    //       <DropDownMenu
-    //         id={row.id}
-    //         onEdit={handleEdit}
-    //         onDelete={handleDelete}
-    //       />
-    //     </div>
   ];
 
   const filteredData = useMemo(() => {
@@ -627,7 +630,7 @@ export default function Home() {
   }, [search]);
 
   return (
-    <div className="p-10 " dir="rtl">
+    <div className="p-10 bg-black/40  shadow-sm" dir="rtl">
       <TableToolbar search={search} onSearchChange={setSearch} />
       <DataTable data={filteredData} columns={columns} />
     </div>
