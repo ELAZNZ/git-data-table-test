@@ -95,7 +95,7 @@ export default function DataTable({ data, columns }: DataTableProps) {
                     }}
                   >
                     <div className="flex items-center gap-1">
-                      {col.sortable && sortField === col.key && (
+                      {col.sortable && (
                         <Image
                           src={chevronsUpDown}
                           alt=""
