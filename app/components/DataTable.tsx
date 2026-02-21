@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Pagination from "./Pagination";
 import Image from "next/image";
 import chevronsUpDown from "@/app/assets/icons/chevronsUpDown.svg";
 
@@ -28,6 +29,9 @@ export default function DataTable({ data, columns }: DataTableProps) {
   const [sortField, setSortField] = useState<string | null>(null);
   const [order, setOrder] = useState<SortOrder>("asc");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
   useEffect(() => {
     setTableData(data);
   }, [data]);
@@ -52,9 +56,17 @@ export default function DataTable({ data, columns }: DataTableProps) {
     setTableData(sorted);
   };
 
+  const totalRows = tableData.length;
+  const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+
+  const paginatedData = tableData.slice(startIndex, endIndex);
+
   return (
     <div className="">
-      <div className="max-h-132 overflow-auto rounded-2xl bg-white ">
+      <div className="max-h-132 overflow-auto rounded-2xl bg-white">
         <table
           className="text-right text-sm border-collapse text-[#323338] h-100% w-full"
           dir="rtl"
@@ -96,8 +108,8 @@ export default function DataTable({ data, columns }: DataTableProps) {
             </tr>
           </thead>
 
-          <tbody className="py-4 px-2 ">
-            {tableData.map((row, rowIndex) => (
+          <tbody className="py-4 px-2">
+            {paginatedData.map((row, rowIndex) => (
               <tr key={rowIndex} className="">
                 {columns.map((col) => (
                   <td
@@ -112,6 +124,13 @@ export default function DataTable({ data, columns }: DataTableProps) {
           </tbody>
         </table>
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        rowsPerPage={rowsPerPage}
+        setCurrentPage={setCurrentPage}
+        setRowsPerPage={setRowsPerPage}
+      />
     </div>
   );
 }
