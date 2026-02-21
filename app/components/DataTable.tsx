@@ -66,63 +66,69 @@ export default function DataTable({ data, columns }: DataTableProps) {
 
   return (
     <div className="">
-      <div className="max-h-132 overflow-auto rounded-2xl bg-white">
-        <table
-          className="text-right text-sm border-collapse text-[#323338] h-100% w-full"
-          dir="rtl"
-        >
-          <thead className="bg-[#ECF0FC]">
-            <tr>
-              {columns.map((col) => (
-                <th
-                  key={col.key}
-                  className={`py-2.5 pr-2 leading-6 ${
-                    col.sortable ? "cursor-pointer select-none" : ""
-                  }`}
-                  style={{ width: col.width }}
-                  onClick={() => {
-                    if (!col.sortable) return;
-
-                    const newOrder =
-                      sortField === col.key && order === "asc" ? "desc" : "asc";
-
-                    setSortField(col.key);
-                    setOrder(newOrder);
-                    handleSorting(col.key, newOrder);
-                  }}
-                >
-                  <div className="flex items-center gap-1">
-                    {col.sortable && sortField === col.key && (
-                      <Image
-                        src={chevronsUpDown}
-                        alt=""
-                        width={16}
-                        height={16}
-                      />
-                    )}
-
-                    {col.header}
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-
-          <tbody className="py-4 px-2">
-            {paginatedData.map((row, rowIndex) => (
-              <tr key={rowIndex} className="">
+      <div className="overflow-hidden rounded-2xl">
+        <div className="bg-white overflow-auto max-h-132">
+          <table
+            className="text-right text-sm border-collapse text-[#323338] h-100% w-full"
+            dir="rtl"
+          >
+            <thead className="bg-[#ECF0FC]">
+              <tr>
                 {columns.map((col) => (
-                  <td
+                  <th
                     key={col.key}
-                    className="p-2 leading-5 hover:text-[#3B60CD]"
+                    className={`py-2.5 pr-2 leading-6 ${
+                      col.sortable ? "cursor-pointer select-none" : ""
+                    }`}
+                    style={{ width: col.width }}
+                    onClick={() => {
+                      if (!col.sortable) return;
+
+                      const newOrder =
+                        sortField === col.key && order === "asc"
+                          ? "desc"
+                          : "asc";
+
+                      setSortField(col.key);
+                      setOrder(newOrder);
+                      handleSorting(col.key, newOrder);
+                    }}
                   >
-                    {col.render ? col.render(row) : String(row[col.key] ?? "")}
-                  </td>
+                    <div className="flex items-center gap-1">
+                      {col.sortable && sortField === col.key && (
+                        <Image
+                          src={chevronsUpDown}
+                          alt=""
+                          width={16}
+                          height={16}
+                        />
+                      )}
+
+                      {col.header}
+                    </div>
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody className="py-4 px-2">
+              {paginatedData.map((row, rowIndex) => (
+                <tr key={rowIndex} className="">
+                  {columns.map((col) => (
+                    <td
+                      key={col.key}
+                      className="p-2 leading-5 hover:text-[#3B60CD]"
+                    >
+                      {col.render
+                        ? col.render(row)
+                        : String(row[col.key] ?? "")}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       <Pagination
         currentPage={currentPage}
