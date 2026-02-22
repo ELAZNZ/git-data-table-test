@@ -69,7 +69,7 @@ export default function DataTable({ data, columns }: DataTableProps) {
       <div className="overflow-hidden rounded-2xl">
         <div className="bg-white overflow-auto max-h-132">
           <table
-            className="text-right text-sm border-collapse text-[#323338] h-100% w-full"
+            className="text-right text-sm border-collapse text-[#323338] h-100% w-full min-w-max"
             dir="rtl"
           >
             <thead className="bg-[#ECF0FC]">
