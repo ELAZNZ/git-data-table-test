@@ -10,6 +10,7 @@ interface Column {
   key: string;
   sortable?: boolean;
   width?: string;
+  headerIcon?: any;
   render?: (row: DataRow) => React.ReactNode;
 }
 
@@ -105,6 +106,15 @@ export default function DataTable({ data, columns }: DataTableProps) {
                       )}
 
                       {col.header}
+
+                      {col.headerIcon && (
+                        <Image
+                          src={col.headerIcon}
+                          alt=""
+                          width={16}
+                          height={16}
+                        />
+                      )}
                     </div>
                   </th>
                 ))}

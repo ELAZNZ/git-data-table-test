@@ -7,6 +7,7 @@ import { TableToolbar } from "./components/TableToolbar";
 import { useMemo, useState } from "react";
 import { DropDownMenu } from "./components/DropDownMenu";
 import spinnerDots from "@/app/assets/icons/spinnerDots.svg";
+import infoCircle from "@/app/assets/icons/infoCircle.svg";
 
 // interface ServiceItem {
 //   id: number;
@@ -603,6 +604,7 @@ export default function Home() {
       header: "وضعیت سرور",
       key: "serverStatus",
       width: "120px",
+      headerIcon: infoCircle,
       render: (row) => <SwitchButton initialValue={row.serverStatus} />,
     },
     {
