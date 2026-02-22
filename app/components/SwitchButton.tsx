@@ -74,20 +74,20 @@ export const SwitchButton = ({
       role="switch"
       aria-checked={enabled}
       className={`
-        relative flex h-8 w-14 items-center justify-end rounded-full p-1 focus:outline-none
+        relative flex h-5.25 w-9.5 items-center justify-end rounded-full p-1 focus:outline-none transition duration-300
         ${enabled ? "bg-[#12B28C]" : "bg-[#D5D5D9]"}
       `}
     >
       <div
-        className={`cursor-pointer flex h-6 w-6 transform items-center justify-center rounded-full bg-white
-          ${enabled ? "translate-x-6" : "translate-x-0"}
+        className={`cursor-pointer flex h-4 w-4 transform items-center justify-center rounded-full bg-white transiion duration-300
+          ${enabled ? "translate-x-4" : "translate-x-0"}
         `}
       >
         <Image
           src={power}
           alt=""
-          width={16}
-          height={16}
+          width={10}
+          height={10}
           className={`${enabled ? "" : "opacity-50"}`}
         />
       </div>
