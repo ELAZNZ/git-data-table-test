@@ -3,6 +3,7 @@
 import Image from "next/image";
 import leftArroW from "@/app/assets/icons/leftArrow.svg";
 import rightArrow from "@/app/assets/icons/rightArrow.svg";
+import chevronsUpDown from "@/app/assets/icons/chevronsUpDown.svg";
 
 interface PaginationProps {
   currentPage: number;
@@ -68,22 +69,33 @@ export default function Pagination({
 
       <div className="flex items-center gap-2">
         <span className="text-[#54565F] leading-6">ردیف در هر صفحه</span>
+        <div className="relative flex items-center justify-between bg-white w-17.5 border border-[#D5D5D9] rounded-lg cursor-pointer px-3 py-1.5">
+          <Image
+            src={chevronsUpDown}
+            alt=""
+            width={16}
+            height={16}
+            className="pointer-events-none"
+          />
 
-        <select
-          value={rowsPerPage}
-          onChange={(e) => {
-            const value = Number(e.target.value);
-            setRowsPerPage(value);
-            setCurrentPage(1);
-          }}
-          className="bg-white border border-[#D5D5D9] rounded-lg px-3 py-1.5 outline-none"
-        >
-          {[10, 20, 50, 100].map((size) => (
-            <option key={size} value={size}>
-              {size}
-            </option>
-          ))}
-        </select>
+          <span className="text-sm">{rowsPerPage}</span>
+
+          <select
+            value={rowsPerPage}
+            onChange={(e) => {
+              const value = Number(e.target.value);
+              setRowsPerPage(value);
+              setCurrentPage(1);
+            }}
+            className="absolute inset-0 w-full h-full cursor-pointer opacity-0"
+          >
+            {[10, 20, 50, 100].map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     </div>
   );
