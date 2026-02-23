@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import power from "@/app/assets/icons/power.svg";
 
-import { SwitchButtonProps } from "../utils/types";
+import { SwitchButtonProps } from "../../utils/types";
 
 export const SwitchButton = ({
   initialValue = false,

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import frame from "@/app/assets/icons/frame.svg";
 
-import { TableToolbarProps } from "../utils/types";
+import { TableToolbarProps } from "../../utils/types";
 
 export const TableToolbar = ({ search, onSearchChange }: TableToolbarProps) => {
   return (

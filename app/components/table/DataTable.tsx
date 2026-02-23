@@ -7,7 +7,7 @@ import chevronsUpDown from "@/app/assets/icons/chevronsUpDown.svg";
 
 import { DataTableProps } from "@/app/utils/types";
 
-export default function DataTable<T extends { [key: string]: any }>({
+export default function DataTable<T extends Record<string, unknown>>({
   data,
   columns,
 }: DataTableProps<T>) {

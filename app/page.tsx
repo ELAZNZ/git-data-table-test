@@ -1,11 +1,11 @@
 "use client";
-import DataTable from "./components/DataTable";
+import DataTable from "./components/table/DataTable";
 import Image from "next/image";
-import { SwitchButton } from "./components/SwitchButton";
-import { CopyItem } from "./components/CopyItem";
-import { TableToolbar } from "./components/TableToolbar";
+import { SwitchButton } from "./components/table/SwitchButton";
+import { CopyItem } from "./components/table/CopyItem";
+import { TableToolbar } from "./components/table/TableToolbar";
 import { useMemo, useState } from "react";
-import { DropDownMenu } from "./components/DropDownMenu";
+import { DropDownMenu } from "./components/table/DropDownMenu";
 import { Column, ServiceItem } from "./utils/types";
 import spinnerDots from "@/app/assets/icons/spinnerDots.svg";
 import infoCircle from "@/app/assets/icons/infoCircle.svg";
