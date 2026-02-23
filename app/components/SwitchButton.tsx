@@ -1,59 +1,10 @@
-// "use client";
-
-// import { useState } from "react";
-// import Image from "next/image";
-
-// type SwitchButtonProps = {
-//   initialValue: boolean;
-//   onChange?: (value: boolean) => void;
-// };
-
-// export const SwitchButton = ({ initialValue, onChange }: SwitchButtonProps) => {
-//   const [enabled, setEnabled] = useState(initialValue);
-
-//   const toggle = () => {
-//     const newValue = !enabled;
-//     setEnabled(newValue);
-//     onChange?.(newValue);
-//   };
-
-//   return (
-//     <button
-//       onClick={toggle}
-//       className={`
-//         flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 ease-in-out outline-none
-//         ${
-//           enabled
-//             ? "bg-green-100 shadow-[0_0_10px_rgba(34,197,94,0.6)] ring-1 ring-green-300"
-//             : "bg-gray-100 hover:bg-gray-200"
-//         }
-//       `}
-//     >
-//       <Image
-//         src={"/icons/power.svg"}
-//         alt=""
-//         width={16}
-//         height={16}
-//         className={`transition-all duration-300 ${
-//           enabled
-//             ? "opacity-100 filter-none scale-110"
-//             : "opacity-40 grayscale scale-100"
-//         }`}
-//       />
-//     </button>
-//   );
-// };
-
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import power from "@/app/assets/icons/power.svg";
 
-type SwitchButtonProps = {
-  initialValue?: boolean;
-  onChange?: (value: boolean) => void;
-};
+import { SwitchButtonProps } from "../utils/types";
 
 export const SwitchButton = ({
   initialValue = false,

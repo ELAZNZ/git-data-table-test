@@ -5,13 +5,7 @@ import leftArroW from "@/app/assets/icons/leftArrow.svg";
 import rightArrow from "@/app/assets/icons/rightArrow.svg";
 import chevronsUpDown from "@/app/assets/icons/chevronsUpDown.svg";
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  rowsPerPage: number;
-  setCurrentPage: (page: number) => void;
-  setRowsPerPage: (rows: number) => void;
-}
+import { PaginationProps } from "../utils/types";
 
 export default function Pagination({
   currentPage,

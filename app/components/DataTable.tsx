@@ -5,28 +5,15 @@ import Pagination from "./Pagination";
 import Image from "next/image";
 import chevronsUpDown from "@/app/assets/icons/chevronsUpDown.svg";
 
-interface Column {
-  header: string;
-  key: string;
-  sortable?: boolean;
-  width?: string;
-  headerIcon?: any;
-  render?: (row: DataRow) => React.ReactNode;
-}
+import { DataTableProps } from "@/app/utils/types";
 
-interface DataRow {
-  [key: string]: unknown;
-}
-
-interface DataTableProps {
-  data: DataRow[];
-  columns: Column[];
-}
-
-export default function DataTable({ data, columns }: DataTableProps) {
+export default function DataTable<T extends { [key: string]: any }>({
+  data,
+  columns,
+}: DataTableProps<T>) {
   type SortOrder = "asc" | "desc";
 
-  const [tableData, setTableData] = useState<DataRow[]>(data);
+  const [tableData, setTableData] = useState<T[]>(data);
   const [sortField, setSortField] = useState<string | null>(null);
   const [order, setOrder] = useState<SortOrder>("asc");
 
@@ -107,14 +94,7 @@ export default function DataTable({ data, columns }: DataTableProps) {
 
                       {col.header}
 
-                      {col.headerIcon && (
-                        <Image
-                          src={col.headerIcon}
-                          alt=""
-                          width={16}
-                          height={16}
-                        />
-                      )}
+                      {col.headerIcon}
                     </div>
                   </th>
                 ))}

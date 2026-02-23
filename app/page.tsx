@@ -6,18 +6,9 @@ import { CopyItem } from "./components/CopyItem";
 import { TableToolbar } from "./components/TableToolbar";
 import { useMemo, useState } from "react";
 import { DropDownMenu } from "./components/DropDownMenu";
+import { Column, ServiceItem } from "./utils/types";
 import spinnerDots from "@/app/assets/icons/spinnerDots.svg";
 import infoCircle from "@/app/assets/icons/infoCircle.svg";
-
-// interface ServiceItem {
-//   id: number;
-//   nameService: string;
-//   typeService: string;
-//   tag: string;
-//   ip: string;
-//   creationDate: string;
-//   serverStatus: boolean;
-// }
 
 const testData = [
   {
@@ -565,7 +556,7 @@ const testData = [
 export default function Home() {
   const [search, setSearch] = useState("");
 
-  const columns = [
+  const columns: Column<ServiceItem>[] = [
     { header: "نام سرویس", key: "nameService", sortable: true, width: "120px" },
     { header: "نوع سرویس", key: "typeService", width: "140px" },
     {
@@ -604,7 +595,7 @@ export default function Home() {
       header: "وضعیت سرور",
       key: "serverStatus",
       width: "120px",
-      headerIcon: infoCircle,
+      headerIcon: <Image src={infoCircle} alt="" width={16} height={16} />,
       render: (row) => <SwitchButton initialValue={row.serverStatus} />,
     },
     {

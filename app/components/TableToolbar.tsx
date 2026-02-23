@@ -3,10 +3,7 @@
 import Image from "next/image";
 import frame from "@/app/assets/icons/frame.svg";
 
-interface TableToolbarProps {
-  search: string;
-  onSearchChange: (value: string) => void;
-}
+import { TableToolbarProps } from "../utils/types";
 
 export const TableToolbar = ({ search, onSearchChange }: TableToolbarProps) => {
   return (
