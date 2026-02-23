@@ -26,8 +26,8 @@ export default function Pagination({
         <div className="flex items-center gap-2 ml-8">
           <button
             onClick={() => setCurrentPage(Math.max(currentPage - 2, 1))}
-            disabled={currentPage === 1}
-            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center"
+            disabled={currentPage <= 2}
+            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center cursor-pointer disabled:bg-[#D5D5D9] disabled:cursor-not-allowed"
           >
             <Image src={rightArrow} alt="" />
             <Image src={rightArrow} alt="" />
@@ -36,7 +36,7 @@ export default function Pagination({
           <button
             onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
             disabled={currentPage === 1}
-            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center"
+            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center cursor-pointer disabled:bg-[#D5D5D9] disabled:cursor-not-allowed"
           >
             <Image src={rightArrow} alt="" />
           </button>
@@ -46,7 +46,7 @@ export default function Pagination({
               setCurrentPage(Math.min(currentPage + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center"
+            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center cursor-pointer disabled:bg-[#D5D5D9] disabled:cursor-not-allowed"
           >
             <Image src={leftArroW} alt="" />
           </button>
@@ -55,8 +55,8 @@ export default function Pagination({
             onClick={() =>
               setCurrentPage(Math.min(currentPage + 2, totalPages))
             }
-            disabled={currentPage === totalPages}
-            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center"
+            disabled={currentPage >= totalPages - 1}
+            className="w-8 h-8 rounded-lg bg-white flex items-center justify-center cursor-pointer disabled:bg-[#D5D5D9] disabled:cursor-not-allowed"
           >
             <Image src={leftArroW} alt="" />
             <Image src={leftArroW} alt="" />
