@@ -7,7 +7,7 @@ import { TableToolbarProps } from "../../utils/types";
 
 export const TableToolbar = ({ search, onSearchChange }: TableToolbarProps) => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between w-full">
       <input
         type="text"
         placeholder="جستجو و فیلتر.."

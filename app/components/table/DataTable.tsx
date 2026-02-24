@@ -53,7 +53,7 @@ export default function DataTable<T extends Record<string, unknown>>({
   const paginatedData = tableData.slice(startIndex, endIndex);
 
   return (
-    <div className="">
+    <div className="w-full">
       <div className="overflow-hidden rounded-2xl">
         <div className="bg-white overflow-auto max-h-132">
           <table

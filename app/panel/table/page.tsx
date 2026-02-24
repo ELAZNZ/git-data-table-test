@@ -623,7 +623,10 @@ export default function Home() {
   }, [search]);
 
   return (
-    <div className="p-10 bg-black/40  shadow-sm" dir="rtl">
+    <div
+      className="p-10 bg-black/40  shadow-sm min-h-screen rounded-xl flex flex-col items-center justify-center"
+      dir="rtl"
+    >
       <TableToolbar search={search} onSearchChange={setSearch} />
       <DataTable data={filteredData} columns={columns} />
     </div>
