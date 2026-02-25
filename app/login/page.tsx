@@ -23,7 +23,7 @@ export default function LoginPage() {
         body: JSON.stringify({
           username: username,
           password: password,
-          expiresInMins: 30,
+          expiresInMins: 1,
         }),
       });
 
@@ -35,7 +35,8 @@ export default function LoginPage() {
 
       console.log(data);
 
-      localStorage.setItem("accessToken", data.accessToken);
+      //   localStorage.setItem("accessToken", data.accessToken);
+      document.cookie = `accessToken=${data.accessToken}; path=/; max-age=${1 * 60}`;
 
       router.push("/panel");
     } catch (error) {
@@ -69,6 +70,7 @@ export default function LoginPage() {
           <input
             type="text"
             placeholder="نام کاربری"
+            //emilys
             value={username}
             className="w-full border border-gray-200 rounded-xl py-2 px-4 outline-gray-400 transition-all text-left placeholder:text-right"
             onChange={(e) => {
@@ -80,6 +82,7 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="رمز عبور"
+            //emilyspass
             value={password}
             className="w-full border border-gray-200 rounded-xl py-2 px-4 outline-gray-400 transition-all text-left placeholder:text-right"
             onChange={(e) => {
