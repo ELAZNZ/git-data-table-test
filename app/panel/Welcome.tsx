@@ -16,21 +16,21 @@ export default function Welcome() {
         onClick={() => {
           setIsModalOpen(true);
         }}
-        className="bg-purple-400 hover:bg-purple-600 outline-none rounded-xl py-3 px-5 text-purple-100 shadow-lg cursor-pointer"
+        className="bg-gray-400 hover:bg-gray-600 outline-none rounded-xl py-3 px-5 text-gray-100 shadow-lg cursor-pointer"
       >
-        میو؟!
+        میو؟! 😸
       </button>
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-lg">
           <div className="bg-white py-10 px-20 rounded-2xl text-center">
-            <h3 className="text-blue-800 mb-5">ویژژژ</h3>
+            <h3 className="text-gray-800 mb-5">ویژژژ 🦭</h3>
 
             <button
               onClick={() => {
                 setIsModalOpen(false);
               }}
-              className="w-full bg-blue-200 hover:bg-blue-400 rounded-xl text-blue-900 py-3 px-5 cursor-pointer"
+              className="w-full bg-gray-200 hover:bg-gray-400 rounded-xl text-gray-900 py-3 px-5 cursor-pointer"
             >
               بستن
             </button>
