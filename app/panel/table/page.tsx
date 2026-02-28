@@ -624,7 +624,7 @@ export default function Home() {
 
   return (
     <div
-      className="p-10 bg-black/40  shadow-sm min-h-screen rounded-xl flex flex-col items-center justify-center"
+      className="p-10 bg-black/40  shadow-sm h-full rounded-xl flex flex-col items-center justify-center"
       dir="rtl"
     >
       <TableToolbar search={search} onSearchChange={setSearch} />
