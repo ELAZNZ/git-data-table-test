@@ -4,7 +4,6 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("accessToken")?.value;
 
   if (!token) {
-    // او را به صفحه اصلی (لاگین) ریدایرکت کن
     return NextResponse.redirect(new URL("/", request.url));
   }
 
