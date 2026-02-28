@@ -7,7 +7,7 @@ export default function Welcome() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="flex items-center flex-col border border-gray-100 rounded-xl min-h-screen w-full gap-5">
+    <div className="flex items-center flex-col border border-gray-100 rounded-xl h-full w-full gap-5">
       <h1 className="text-gray-800 m-5">سلام خوش آمدید.</h1>
 
       <Link href="/panel/table">جدول سرویس ها</Link>

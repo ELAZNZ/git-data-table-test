@@ -2,7 +2,7 @@ import Welcome from "./Welcome";
 
 export default function PanelHomePage() {
   return (
-    <main>
+    <main className="h-full">
       <Welcome />
     </main>
   );
